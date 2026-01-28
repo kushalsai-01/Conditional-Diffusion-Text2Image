@@ -9,13 +9,14 @@ from typing import Optional, Tuple, List, Callable
 
 class TextImageDataset(Dataset):
     def __init__(
-        self,
-        root_dir: str = "./dataset",
-        image_size: int = 64,
-        transform: Optional[Callable] = None,
-        use_synthetic: bool = False,
-        synthetic_size: int = 1000
-    ):
+    self,
+    data_path: str = "data/images",
+    img_dim: int = 128,
+    transform_fn: Optional[Callable] = None,
+    enable_synthetic: bool = True,
+    num_synthetic: int = 2000
+):
+
         self.root_dir = root_dir
         self.image_size = image_size
         self.use_synthetic = use_synthetic
