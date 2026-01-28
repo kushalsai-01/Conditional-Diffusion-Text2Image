@@ -151,7 +151,7 @@ def main():
     print("Loading dataset...")
     if args.use_synthetic:
         dataloader = get_dataloader(
-            data_dir=args.data_dir,
+            root_dir=args.data_dir,
             image_size=args.image_size,
             batch_size=args.batch_size,
             num_workers=args.num_workers,
@@ -160,7 +160,7 @@ def main():
         )
     else:
         dataloader = get_dataloader(
-            data_dir=args.data_dir,
+            root_dir=args.data_dir,
             image_size=args.image_size,
             batch_size=args.batch_size,
             num_workers=args.num_workers

@@ -123,7 +123,7 @@ class TextImageDataset(Dataset):
     def __len__(self) -> int:
         return len(self.samples)
     
-    def __getitem__(self, idx: int) -> Tuple[torch.Tensor, str]:
+    def __getitem__(self, idx: int) -> Dict[str, Any]:
         if self.use_synthetic:
             _, caption = self.samples[idx]
             image = self._generate_synthetic_image()
@@ -132,7 +132,7 @@ class TextImageDataset(Dataset):
             image = Image.open(img_path).convert('RGB')
             image = self.transform(image)
             caption = self._read_caption(txt_path)
-        return image, caption
+        return {"image": image, "text": caption}
 
 
 def get_dataloader(
